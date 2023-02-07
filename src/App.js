@@ -49,10 +49,10 @@ function App({ domElement }) {
     <div className="reddit_widget__app">
       <Helmet>
       <link
-      href="https://giologist.github.io/article-react-reddit-widget/index.css"
+      href={`https://fernandesalisha.github.io/widget-poc/${subreddit}.css`} 
       rel="stylesheet"
     />
-    <script src="https://giologist.github.io/article-react-reddit-widget/index.js"></script>
+    <script src={`https://fernandesalisha.github.io/widget-poc/${subreddit}.js`} ></script>
       </Helmet>
       <h1 className="reddit_widget__header">
         Latest posts in <a href={`https://reddit.com/r/${subreddit}`} rel="noopener noreferrer">/r/{subreddit}</a>

@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import '../App.css';
 import {Helmet} from "react-helmet";
 
 // Render each post
@@ -23,7 +23,7 @@ function nonStickiedOnly(post){
   return !post.data.stickied
 }
 
-function App({ domElement }) {
+function Pics({ domElement }) {
   const subreddit = domElement.getAttribute("data-subreddit")
   const [loading, setLoading] = useState();
   const [error, setError] = useState('');
@@ -73,4 +73,4 @@ function App({ domElement }) {
   );
 }
 
-export default App;
+export default Pics;

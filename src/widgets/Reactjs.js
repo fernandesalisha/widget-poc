@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import '../App.css';
 import {Helmet} from "react-helmet";
 
 // Render each post
@@ -23,7 +23,7 @@ function nonStickiedOnly(post){
   return !post.data.stickied
 }
 
-function App({ domElement }) {
+function Reactjs({ domElement }) {
   const subreddit = domElement.getAttribute("data-subreddit")
   const [loading, setLoading] = useState();
   const [error, setError] = useState('');
@@ -48,8 +48,8 @@ function App({ domElement }) {
   return (
     <div className="reddit_widget__app">
       <Helmet>
-    <link href="https://fernandesalisha.github.io/widget-poc/index.css" rel="stylesheet" />
-    <script src="https://fernandesalisha.github.io/widget-poc/index.js"></script>
+    <link href="docs/index.css" rel="stylesheet" />
+    <script src="widget-poc/docs/index.js"></script>
       </Helmet>
       <h1 className="reddit_widget__header">
         Latest posts in <a href={`https://reddit.com/r/${subreddit}`} rel="noopener noreferrer">/r/{subreddit}</a>
@@ -73,4 +73,4 @@ function App({ domElement }) {
   );
 }
 
-export default App;
+export default Reactjs;

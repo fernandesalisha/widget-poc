@@ -865,7 +865,7 @@ if ("production" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.production.min.js":"i17t"}],"vKFU":[function(require,module,exports) {
+},{"./cjs/react-dom.production.min.js":"i17t"}],"EQHX":[function(require,module,exports) {
 
 },{}],"Asjh":[function(require,module,exports) {
 /**
@@ -2169,10 +2169,10 @@ function App(_ref) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "reddit_widget__app"
   }, /*#__PURE__*/_react.default.createElement(_reactHelmet.Helmet, null, /*#__PURE__*/_react.default.createElement("link", {
-    href: "https://fernandesalisha.github.io/widget-poc/".concat(subreddit, ".css"),
+    href: "https://fernandesalisha.github.io/widget-poc/index.css",
     rel: "stylesheet"
   }), /*#__PURE__*/_react.default.createElement("script", {
-    src: "https://fernandesalisha.github.io/widget-poc/".concat(subreddit, ".js")
+    src: "https://fernandesalisha.github.io/widget-poc/index.js"
   })), /*#__PURE__*/_react.default.createElement("h1", {
     className: "reddit_widget__header"
   }, "Latest posts in ", /*#__PURE__*/_react.default.createElement("a", {
@@ -2190,130 +2190,318 @@ function App(_ref) {
 }
 var _default = App;
 exports.default = _default;
-},{"react":"n8MK","./App.css":"vKFU","react-helmet":"d59q"}],"FheM":[function(require,module,exports) {
-var bundleURL = null;
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-  return bundleURL;
-}
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-  return '/';
-}
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"TUK3":[function(require,module,exports) {
-var getBundleURL = require('./bundle-url').getBundleURL;
-function loadBundlesLazy(bundles) {
-  if (!Array.isArray(bundles)) {
-    bundles = [bundles];
-  }
-  var id = bundles[bundles.length - 1];
-  try {
-    return Promise.resolve(require(id));
-  } catch (err) {
-    if (err.code === 'MODULE_NOT_FOUND') {
-      return new LazyPromise(function (resolve, reject) {
-        loadBundles(bundles.slice(0, -1)).then(function () {
-          return require(id);
-        }).then(resolve, reject);
-      });
-    }
-    throw err;
-  }
-}
-function loadBundles(bundles) {
-  return Promise.all(bundles.map(loadBundle));
-}
-var bundleLoaders = {};
-function registerBundleLoader(type, loader) {
-  bundleLoaders[type] = loader;
-}
-module.exports = exports = loadBundlesLazy;
-exports.load = loadBundles;
-exports.register = registerBundleLoader;
-var bundles = {};
-function loadBundle(bundle) {
-  var id;
-  if (Array.isArray(bundle)) {
-    id = bundle[1];
-    bundle = bundle[0];
-  }
-  if (bundles[bundle]) {
-    return bundles[bundle];
-  }
-  var type = (bundle.substring(bundle.lastIndexOf('.') + 1, bundle.length) || bundle).toLowerCase();
-  var bundleLoader = bundleLoaders[type];
-  if (bundleLoader) {
-    return bundles[bundle] = bundleLoader(getBundleURL() + bundle).then(function (resolved) {
-      if (resolved) {
-        module.bundle.register(id, resolved);
-      }
-      return resolved;
-    }).catch(function (e) {
-      delete bundles[bundle];
-      throw e;
-    });
-  }
-}
-function LazyPromise(executor) {
-  this.executor = executor;
-  this.promise = null;
-}
-LazyPromise.prototype.then = function (onSuccess, onError) {
-  if (this.promise === null) this.promise = new Promise(this.executor);
-  return this.promise.then(onSuccess, onError);
-};
-LazyPromise.prototype.catch = function (onError) {
-  if (this.promise === null) this.promise = new Promise(this.executor);
-  return this.promise.catch(onError);
-};
-},{"./bundle-url":"FheM"}],"xgu8":[function(require,module,exports) {
+},{"react":"n8MK","./App.css":"EQHX","react-helmet":"d59q"}],"SCQ9":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var reportWebVitals = function reportWebVitals(onPerfEntry) {
-  if (onPerfEntry && onPerfEntry instanceof Function) {
-    require("_bundle_loader")(require.resolve('web-vitals')).then(function (_ref) {
-      var getCLS = _ref.getCLS,
-        getFID = _ref.getFID,
-        getFCP = _ref.getFCP,
-        getLCP = _ref.getLCP,
-        getTTFB = _ref.getTTFB;
-      getCLS(onPerfEntry);
-      getFID(onPerfEntry);
-      getFCP(onPerfEntry);
-      getLCP(onPerfEntry);
-      getTTFB(onPerfEntry);
+var _react = _interopRequireWildcard(require("react"));
+require("../App.css");
+var _reactHelmet = require("react-helmet");
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+// Render each post
+function renderPost(post) {
+  var _post$data = post.data,
+    title = _post$data.title,
+    url = _post$data.url,
+    author = _post$data.author,
+    id = _post$data.id;
+  var authorUrl = "https://www.reddit.com/u/".concat(author);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "reddit_widget__post",
+    key: id
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "reddit_widget__posted_by"
+  }, "posted by ", /*#__PURE__*/_react.default.createElement("a", {
+    href: authorUrl,
+    className: "reddit_widget__posted_by",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, "u/", author)), /*#__PURE__*/_react.default.createElement("a", {
+    href: url,
+    className: "reddit_widget__title",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, title));
+}
+
+// Filter, since reddit always returns stickied posts up top
+function nonStickiedOnly(post) {
+  return !post.data.stickied;
+}
+function Javascript(_ref) {
+  var domElement = _ref.domElement;
+  var subreddit = domElement.getAttribute("data-subreddit");
+  var _useState = (0, _react.useState)(),
+    _useState2 = _slicedToArray(_useState, 2),
+    loading = _useState2[0],
+    setLoading = _useState2[1];
+  var _useState3 = (0, _react.useState)(''),
+    _useState4 = _slicedToArray(_useState3, 2),
+    error = _useState4[0],
+    setError = _useState4[1];
+  var _useState5 = (0, _react.useState)([]),
+    _useState6 = _slicedToArray(_useState5, 2),
+    data = _useState6[0],
+    setData = _useState6[1];
+  (0, _react.useEffect)(function () {
+    // Fetch data from reddit
+    setLoading(true);
+    fetch("https://www.reddit.com/r/".concat(subreddit, ".json")).then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      setLoading(false);
+      setData(data.data.children.slice(0, 3));
+    }).catch(function (e) {
+      console.log(e);
+      setLoading(false);
+      setError('error fetching from reddit');
     });
-  }
-};
-var _default = reportWebVitals;
+  }, [subreddit]);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "reddit_widget__app"
+  }, /*#__PURE__*/_react.default.createElement(_reactHelmet.Helmet, null, /*#__PURE__*/_react.default.createElement("link", {
+    href: "https://fernandesalisha.github.io/widget-poc/index.css",
+    rel: "stylesheet"
+  }), /*#__PURE__*/_react.default.createElement("script", {
+    src: "https://fernandesalisha.github.io/widget-poc/index.js"
+  })), /*#__PURE__*/_react.default.createElement("h1", {
+    className: "reddit_widget__header"
+  }, "Latest posts in ", /*#__PURE__*/_react.default.createElement("a", {
+    href: "https://reddit.com/r/".concat(subreddit),
+    rel: "noopener noreferrer"
+  }, "/r/", subreddit)), /*#__PURE__*/_react.default.createElement("div", {
+    className: "reddit_widget__inner"
+  }, loading && "Loading...", error && error, !!data.length && data.filter(nonStickiedOnly).map(renderPost)), /*#__PURE__*/_react.default.createElement("p", {
+    className: "reddit_widget__powered_by"
+  }, "This widget is powered by", " ", /*#__PURE__*/_react.default.createElement("a", {
+    href: "https://javascriptpros.com",
+    rel: "noopener noreferrer",
+    target: "_blank"
+  }, "JavaScriptPros.com")));
+}
+var _default = Javascript;
 exports.default = _default;
-},{"_bundle_loader":"TUK3","web-vitals":[["web-vitals.c77ff993.js","f6pS"],"f6pS"]}],"Focm":[function(require,module,exports) {
+},{"react":"n8MK","../App.css":"EQHX","react-helmet":"d59q"}],"ICvN":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = _interopRequireWildcard(require("react"));
+require("../App.css");
+var _reactHelmet = require("react-helmet");
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+// Render each post
+function renderPost(post) {
+  var _post$data = post.data,
+    title = _post$data.title,
+    url = _post$data.url,
+    author = _post$data.author,
+    id = _post$data.id;
+  var authorUrl = "https://www.reddit.com/u/".concat(author);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "reddit_widget__post",
+    key: id
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "reddit_widget__posted_by"
+  }, "posted by ", /*#__PURE__*/_react.default.createElement("a", {
+    href: authorUrl,
+    className: "reddit_widget__posted_by",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, "u/", author)), /*#__PURE__*/_react.default.createElement("a", {
+    href: url,
+    className: "reddit_widget__title",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, title));
+}
+
+// Filter, since reddit always returns stickied posts up top
+function nonStickiedOnly(post) {
+  return !post.data.stickied;
+}
+function Pics(_ref) {
+  var domElement = _ref.domElement;
+  var subreddit = domElement.getAttribute("data-subreddit");
+  var _useState = (0, _react.useState)(),
+    _useState2 = _slicedToArray(_useState, 2),
+    loading = _useState2[0],
+    setLoading = _useState2[1];
+  var _useState3 = (0, _react.useState)(''),
+    _useState4 = _slicedToArray(_useState3, 2),
+    error = _useState4[0],
+    setError = _useState4[1];
+  var _useState5 = (0, _react.useState)([]),
+    _useState6 = _slicedToArray(_useState5, 2),
+    data = _useState6[0],
+    setData = _useState6[1];
+  (0, _react.useEffect)(function () {
+    // Fetch data from reddit
+    setLoading(true);
+    fetch("https://www.reddit.com/r/".concat(subreddit, ".json")).then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      setLoading(false);
+      setData(data.data.children.slice(0, 3));
+    }).catch(function (e) {
+      console.log(e);
+      setLoading(false);
+      setError('error fetching from reddit');
+    });
+  }, [subreddit]);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "reddit_widget__app"
+  }, /*#__PURE__*/_react.default.createElement(_reactHelmet.Helmet, null, /*#__PURE__*/_react.default.createElement("link", {
+    href: "https://fernandesalisha.github.io/widget-poc/index.css",
+    rel: "stylesheet"
+  }), /*#__PURE__*/_react.default.createElement("script", {
+    src: "https://fernandesalisha.github.io/widget-poc/index.js"
+  })), /*#__PURE__*/_react.default.createElement("h1", {
+    className: "reddit_widget__header"
+  }, "Latest posts in ", /*#__PURE__*/_react.default.createElement("a", {
+    href: "https://reddit.com/r/".concat(subreddit),
+    rel: "noopener noreferrer"
+  }, "/r/", subreddit)), /*#__PURE__*/_react.default.createElement("div", {
+    className: "reddit_widget__inner"
+  }, loading && "Loading...", error && error, !!data.length && data.filter(nonStickiedOnly).map(renderPost)), /*#__PURE__*/_react.default.createElement("p", {
+    className: "reddit_widget__powered_by"
+  }, "This widget is powered by", " ", /*#__PURE__*/_react.default.createElement("a", {
+    href: "https://javascriptpros.com",
+    rel: "noopener noreferrer",
+    target: "_blank"
+  }, "JavaScriptPros.com")));
+}
+var _default = Pics;
+exports.default = _default;
+},{"react":"n8MK","../App.css":"EQHX","react-helmet":"d59q"}],"vpov":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = _interopRequireWildcard(require("react"));
+require("../App.css");
+var _reactHelmet = require("react-helmet");
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+// Render each post
+function renderPost(post) {
+  var _post$data = post.data,
+    title = _post$data.title,
+    url = _post$data.url,
+    author = _post$data.author,
+    id = _post$data.id;
+  var authorUrl = "https://www.reddit.com/u/".concat(author);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "reddit_widget__post",
+    key: id
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "reddit_widget__posted_by"
+  }, "posted by ", /*#__PURE__*/_react.default.createElement("a", {
+    href: authorUrl,
+    className: "reddit_widget__posted_by",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, "u/", author)), /*#__PURE__*/_react.default.createElement("a", {
+    href: url,
+    className: "reddit_widget__title",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, title));
+}
+
+// Filter, since reddit always returns stickied posts up top
+function nonStickiedOnly(post) {
+  return !post.data.stickied;
+}
+function Reactjs(_ref) {
+  var domElement = _ref.domElement;
+  var subreddit = domElement.getAttribute("data-subreddit");
+  var _useState = (0, _react.useState)(),
+    _useState2 = _slicedToArray(_useState, 2),
+    loading = _useState2[0],
+    setLoading = _useState2[1];
+  var _useState3 = (0, _react.useState)(''),
+    _useState4 = _slicedToArray(_useState3, 2),
+    error = _useState4[0],
+    setError = _useState4[1];
+  var _useState5 = (0, _react.useState)([]),
+    _useState6 = _slicedToArray(_useState5, 2),
+    data = _useState6[0],
+    setData = _useState6[1];
+  (0, _react.useEffect)(function () {
+    // Fetch data from reddit
+    setLoading(true);
+    fetch("https://www.reddit.com/r/".concat(subreddit, ".json")).then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      setLoading(false);
+      setData(data.data.children.slice(0, 3));
+    }).catch(function (e) {
+      console.log(e);
+      setLoading(false);
+      setError('error fetching from reddit');
+    });
+  }, [subreddit]);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "reddit_widget__app"
+  }, /*#__PURE__*/_react.default.createElement(_reactHelmet.Helmet, null, /*#__PURE__*/_react.default.createElement("link", {
+    href: "docs/index.css",
+    rel: "stylesheet"
+  }), /*#__PURE__*/_react.default.createElement("script", {
+    src: "widget-poc/docs/index.js"
+  })), /*#__PURE__*/_react.default.createElement("h1", {
+    className: "reddit_widget__header"
+  }, "Latest posts in ", /*#__PURE__*/_react.default.createElement("a", {
+    href: "https://reddit.com/r/".concat(subreddit),
+    rel: "noopener noreferrer"
+  }, "/r/", subreddit)), /*#__PURE__*/_react.default.createElement("div", {
+    className: "reddit_widget__inner"
+  }, loading && "Loading...", error && error, !!data.length && data.filter(nonStickiedOnly).map(renderPost)), /*#__PURE__*/_react.default.createElement("p", {
+    className: "reddit_widget__powered_by"
+  }, "This widget is powered by", " ", /*#__PURE__*/_react.default.createElement("a", {
+    href: "https://javascriptpros.com",
+    rel: "noopener noreferrer",
+    target: "_blank"
+  }, "JavaScriptPros.com")));
+}
+var _default = Reactjs;
+exports.default = _default;
+},{"react":"n8MK","../App.css":"EQHX","react-helmet":"d59q"}],"Focm":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
 var _reactDom = _interopRequireDefault(require("react-dom"));
-require("./index.css");
 var _App = _interopRequireDefault(require("./App"));
-var _reportWebVitals = _interopRequireDefault(require("./reportWebVitals"));
+var _Javascript = _interopRequireDefault(require("./widgets/Javascript"));
+var _Pics = _interopRequireDefault(require("./widgets/Pics"));
+var _Reactjs = _interopRequireDefault(require("./widgets/Reactjs"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 // Find all widget divs
 var WidgetDivs = document.querySelectorAll('.widget');
@@ -2326,26 +2514,4 @@ WidgetDivs.forEach(function (Div) {
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-(0, _reportWebVitals.default)();
-},{"react":"n8MK","react-dom":"NKHc","./index.css":"vKFU","./App":"lY9v","./reportWebVitals":"xgu8"}],"Yi9z":[function(require,module,exports) {
-module.exports = function loadJSBundle(bundle) {
-  return new Promise(function (resolve, reject) {
-    var script = document.createElement('script');
-    script.async = true;
-    script.type = 'text/javascript';
-    script.charset = 'utf-8';
-    script.src = bundle;
-    script.onerror = function (e) {
-      script.onerror = script.onload = null;
-      reject(e);
-    };
-    script.onload = function () {
-      script.onerror = script.onload = null;
-      resolve();
-    };
-    document.getElementsByTagName('head')[0].appendChild(script);
-  });
-};
-},{}],0:[function(require,module,exports) {
-var b=require("TUK3");b.register("js",require("Yi9z"));
-},{}]},{},[0,"Focm"], null)
+},{"react":"n8MK","react-dom":"NKHc","./App":"lY9v","./widgets/Javascript":"SCQ9","./widgets/Pics":"ICvN","./widgets/Reactjs":"vpov"}]},{},["Focm"], null)

@@ -48,8 +48,8 @@ function App({ domElement }) {
   return (
     <div className="reddit_widget__app">
       <Helmet>
-    <link href="https://fernandesalisha.github.io/widget-poc/index.css" rel="stylesheet" />
-    <script src="https://fernandesalisha.github.io/widget-poc/index.js"></script>
+    <link href="https://fernandesalisha.github.io/widget-poc/widgets/pics.css" rel="stylesheet" />
+    <script src="https://fernandesalisha.github.io/widget-poc/widgets/pics.js"></script>
       </Helmet>
       <h1 className="reddit_widget__header">
         Latest posts in <a href={`https://reddit.com/r/${subreddit}`} rel="noopener noreferrer">/r/{subreddit}</a>

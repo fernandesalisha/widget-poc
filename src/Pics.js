@@ -12,3 +12,5 @@ WidgetDivs.forEach(Div => {
     Div
   );
 });
+
+export default Pics;

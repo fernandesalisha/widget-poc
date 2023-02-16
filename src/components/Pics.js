@@ -59,16 +59,6 @@ function Pics({ domElement }) {
         {error && error}
         {!!data.length && data.filter(nonStickiedOnly).map(renderPost)}
       </div>
-      <p className="reddit_widget__powered_by">
-        This widget is powered by{" "}
-        <a
-          href="https://javascriptpros.com"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          JavaScriptPros.com
-        </a>
-      </p>
     </div>
   );
 }

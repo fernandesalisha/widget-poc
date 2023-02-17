@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Pics from "./Pics";
-
-  ReactDOM.render(
+import Javascript from "./Javascript"; 
+import Reactjs from "./Reactjs"; 
+ ReactDOM.render(
     <React.StrictMode>
       <Pics />
+      <Javascript/>
+      <Reactjs/>
     </React.StrictMode>
   );
 
